@@ -10,5 +10,13 @@ def index():
 def fieldConfig():
     return render_template('field.html')
 
+@app.route('/scoring')
+def scoring():
+    return render_template('scoring.html')
+
+@app.route('/connections')
+def connections():
+    return render_template('connections.html')
+
 if __name__ == '__main__':
     app.run(debug=True, host='0.0.0.0')
