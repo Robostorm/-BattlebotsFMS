@@ -21,5 +21,12 @@ def scoring():
 def connections():
     return render_template('connections.html')
 
+@socketio.on('startMatch')
+def handle_my_custom_event(json):
+    print('Clicked!')
+
 if __name__ == '__main__':
-    socketio.run(app)
+    socketio.run(app, host='192.168.56.5')
+
+#if __name__ == '__main__':
+#    app.run(debug=True, host='0.0.0.0')

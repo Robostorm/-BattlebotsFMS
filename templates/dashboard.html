@@ -8,7 +8,7 @@
   <meta name="description" content="Field Management System user interface for Robostorm Robotics Battlebots competition">
   <meta name="author" content="Andrew Hollabaugh, Ismail Mansuri, John Brereton, Logan Grief, and Tim Hollabaugh">
 
-  <title>Bare - Start Bootstrap Template</title>
+  <title>Robostorm FMS</title>
 
   <!-- Bootstrap core CSS -->
   <link href="/static/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -101,6 +101,16 @@
   <!-- Bootstrap core JavaScript -->
   <script src="/static/jquery/jquery.min.js"></script>
   <script src="/static/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+  <!-- Custom Websocket stuff -->
+  <script src="/static/js/dashboard.js"></script>
+  <script src="/socket.io/socket.io.js"></script>
+  <script>
+    var socket = io.connect();
+    function startClicked(){
+      socket.emit('startMatch');
+    }
+  </script>
 
 </body>
 
