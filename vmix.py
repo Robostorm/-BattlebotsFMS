@@ -1,6 +1,5 @@
 # vmix.py vMix Python Library for Battlebots
 import requests
-#The Codings!!!
 
 # Scoreboard texts & clock functions
 def set_red_score(score, _url):
