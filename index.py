@@ -10,7 +10,7 @@ def index():
     return render_template('home.html')
 
 @app.route('/dashboard')
-def fieldConfig():
+def dashboard():
     return render_template('dashboard.html')
 
 @app.route('/fieldConfig')
