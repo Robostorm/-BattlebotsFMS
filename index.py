@@ -7,6 +7,10 @@ socketio = SocketIO(app)
 
 @app.route('/')
 def index():
+    return render_template('home.html')
+
+@app.route('/dashboard')
+def fieldConfig():
     return render_template('dashboard.html')
 
 @app.route('/fieldConfig')
