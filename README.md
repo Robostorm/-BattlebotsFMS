@@ -3,10 +3,10 @@ Battlebots Field Management System
 
 
 ## Requirements:
-Python 3
-requests
-flask
-flask-socketio
+ - Python 3
+ - requests
+ - flask
+ - flask-socketio
 
 ## vMix Config
 Must use displays provided on drive/github
