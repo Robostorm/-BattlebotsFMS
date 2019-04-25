@@ -52,19 +52,45 @@
   </nav>
 
   <!-- Page Content -->
-  <div class="container">
-    <div class="row">
-      <div class="col-lg-12 text-center">
-        <h1 class="mt-5">A Bootstrap 4 Starter Template</h1>
-        <p class="lead">Complete with pre-defined file paths and responsive navigation!</p>
-        <ul class="list-unstyled">
-          <li>Bootstrap 4.2.1</li>
-          <li>jQuery 3.3.1</li>
-          <li><button type="button" class="btn btn-primary btn-lg" onclick="clicked">Hello World :)</button></li>
-        </ul>
-      </div>
-    </div>
-  </div>
+  <div class="jumbotron" align="center">
+    <h3 class="display-4">Scoring</h3>
+    <table class="table">
+      <thead class="thead">
+        <tr>
+          <th scope="col" colspan="2" class="bg-danger">Red</th>
+          <th scope="col" colspan="2" class="bg-primary">Blue</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="table-danger">
+            Robot 1<br>
+
+          </td>
+          <td class="table-danger"><button type="button" class="btn btn-danger btn-lg" onClick="r1StopClicked()">STOP</button></td>
+          <td class="table-primary">
+            Robot 3<br>
+            <div id="robot3State">Default State</div>
+            <div id="robot3Mode">Default Mode</div>
+          </td>
+          <td class="table-primary"><button type="button" class="btn btn-primary btn-lg" onClick="r3StopClicked()">STOP</button></td>
+        </tr>
+        <tr>
+          <td class="table-danger">
+            Robot 2<br>
+            <div id="robot2State">Default State</div>
+            <div id="robot2Mode">Default Mode</div>
+          </td>
+          <td class="table-danger"><button type="button" class="btn btn-danger btn-lg" onClick="r2StopClicked()">STOP</button></td>
+          <td class="table-primary">
+            Robot 4<br>
+            <div id="robot4State">Default State</div>
+            <div id="robot4Mode">Default Mode</div>
+          </td>
+          <td class="table-primary"><button type="button" class="btn btn-primary btn-lg" onClick="r4StopClicked()">STOP</button></td>
+        </tr>
+      </tbody>
+    </table>
 
   <!-- Bootstrap core JavaScript -->
   <script src="/static/jquery/jquery.min.js"></script>
