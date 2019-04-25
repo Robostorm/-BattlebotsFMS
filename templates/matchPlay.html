@@ -25,19 +25,25 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="/">Home</a>
+          </li>
           <li class="nav-item active">
-            <a class="nav-link" href="#">Dashboard
+            <a class="nav-link" href="matchPlay">Match Play
               <span class="sr-only">(current)</span>
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="fieldConfig">Field Config</a>
+            <a class="nav-link" href="robotManager">Robot Manager</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="eventManager">Event Manager</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="scoring">Scoring</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="connections">Connections</a>
+            <a class="nav-link" href="settings">Settings</a>
           </li>
         </ul>
       </div>
@@ -56,44 +62,58 @@
     <br>
     <h3 class="display-4">Robot Control</h3>
     <table class="table">
-        <thead class="thead">
-            <tr>
-                <th scope="col" colspan="2" class="bg-danger">Red</th>
-                <th scope="col" colspan="2" class="bg-primary">Blue</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-              <td class="table-danger">
-                Robot 1<br>
-                <div id="robot1State">Default State</div>
-                <div id="robot1Mode">Default Mode</div>
-              </td>
-              <td class="table-danger"><button type="button" class="btn btn-danger btn-lg" onClick="r1StopClicked()">STOP</button></td>
-              <td class="table-primary">
-                Robot 3<br>
-                <div id="robot3State">Default State</div>
-                <div id="robot3Mode">Default Mode</div>
-              </td>
-              <td class="table-primary"><button type="button" class="btn btn-primary btn-lg" onClick="r3StopClicked()">STOP</button></td>
-            </tr>
-            <tr>
-              <td class="table-danger">
-                Robot 2<br>
-                <div id="robot2State">Default State</div>
-                <div id="robot2Mode">Default Mode</div>
-              </td>
-              <td class="table-danger"><button type="button" class="btn btn-danger btn-lg" onClick="r2StopClicked()">STOP</button></td>
-              <td class="table-primary">
-                Robot 4<br>
-                <div id="robot4State">Default State</div>
-                <div id="robot4Mode">Default Mode</div>
-              </td>
-              <td class="table-primary"><button type="button" class="btn btn-primary btn-lg" onClick="r4StopClicked()">STOP</button></td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
+      <thead class="thead">
+        <tr>
+          <th scope="col" colspan="2" class="bg-danger">Red</th>
+          <th scope="col" colspan="2" class="bg-primary">Blue</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="table-danger">
+            Robot 1<br>
+            <div id="robot1State">Default State</div>
+            <div id="robot1Mode">Default Mode</div>
+          </td>
+          <td class="table-danger"><button type="button" class="btn btn-danger btn-lg" onClick="r1StopClicked()">STOP</button></td>
+          <td class="table-primary">
+            Robot 3<br>
+            <div id="robot3State">Default State</div>
+            <div id="robot3Mode">Default Mode</div>
+          </td>
+          <td class="table-primary"><button type="button" class="btn btn-primary btn-lg" onClick="r3StopClicked()">STOP</button></td>
+        </tr>
+        <tr>
+          <td class="table-danger">
+            Robot 2<br>
+            <div id="robot2State">Default State</div>
+            <div id="robot2Mode">Default Mode</div>
+          </td>
+          <td class="table-danger"><button type="button" class="btn btn-danger btn-lg" onClick="r2StopClicked()">STOP</button></td>
+          <td class="table-primary">
+            Robot 4<br>
+            <div id="robot4State">Default State</div>
+            <div id="robot4Mode">Default Mode</div>
+          </td>
+          <td class="table-primary"><button type="button" class="btn btn-primary btn-lg" onClick="r4StopClicked()">STOP</button></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <!-- Nav tabs -->
+    <ul class="nav nav-tabs">
+      <li class="nav-item">
+        <a class="nav-link active" data-toggle="tab" href="#matchSchedule">Match Schedule</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" data-toggle="tab" href="#scoring">Scoring</a>
+      </li>
+    </ul>
+
+    <!-- Tab panes -->
+    <div class="tab-content">
+      <div class="tab-pane container active" id="matchSchedule">...</div>
+      <div class="tab-pane container fade" id="scoring">...</div>
     </div>
   </div>
 
