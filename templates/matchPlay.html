@@ -52,8 +52,10 @@
 
   <div class="jumbotron" align="center">
     <h3 class="display-4">Field Control</h3><p></p>
-    <button type="button" class="btn btn-success btn-lg" onClick="startClicked()">Start Match</button>
-    <button type="button" class="btn btn-secondary btn-lg" onClick="pausematch">Pause Match</button>
+    <button type="button" id="preStartBtn" class="btn btn-secondary btn-lg" onClick="preStartClicked()">Pre-Start</button>
+    <button type="button" id="setAudienceDisplayBtn" class="btn btn-warning btn-lg" onClick="setAudienceDisplayClicked()">Field Reset</button>
+    <button type="button" id="startBtn" class="btn btn-success btn-lg" onClick="startClicked()">Start Match</button>
+    
     <button type="button" class="btn btn-danger btn-lg" onClick="stopClicked()">End Match</button>
     <button type="button" class="btn btn-warning btn-lg" onClick="stopClicked()">Field Reset</button>
     <button type="button" class="btn btn-warning btn-lg" onClick="createTable()">Create Table</button>
