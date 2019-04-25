@@ -25,6 +25,10 @@ def eventManager():
 def scoring():
     return render_template('scoring.html')
 
+@app.route('/settings')
+def settings():
+    return render_template('settings.html')
+
 
 
 @socketio.on('startMatch')
