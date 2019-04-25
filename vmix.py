@@ -58,5 +58,3 @@ def set_red_final_score(text, _url):
     return requests.get(_url('Function=SetText&Input=MatchResult&SelectedName=RedScore.Text&Value={:s}'.format(text)))
 def set_blue_final_score(text, _url):
     return requests.get(_url('Function=SetText&Input=MatchResult&SelectedName=BlueScore.Text&Value={:s}'.format(text)))
-
-
