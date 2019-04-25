@@ -1,7 +1,6 @@
 import vmix
 
 ipaddr = '127.0.0.1'
-
 def _url(path):
     return 'http://' + ipaddr + ':8088/api/?' + path
 

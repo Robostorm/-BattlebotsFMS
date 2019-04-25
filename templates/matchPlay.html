@@ -110,6 +110,9 @@
       <li class="nav-item">
         <a class="nav-link" data-toggle="tab" href="#scoring">Scoring</a>
       </li>
+      <li class="nav-item">
+        <a class="nav-link" data-toggle="tab" href="#videoSwitcher">Video Switcher</a>
+      </li>
     </ul>
 
     <!-- Tab panes -->
@@ -119,8 +122,8 @@
 
         </table>
       </div>
-      <div class="tab-pane container fade" id="scoring">...</div>
-    </div>
+      <div class="tab-pane container fade" id="scoring">Scoring is fun!</div>
+      <div class="tab-pane container fade" id="videoSwitcher">#vMix4life!</div>
   </div>
 
   <!-- Bootstrap core JavaScript -->
@@ -134,8 +137,23 @@
       socket.on('connect', function() {
           socket.emit('my event', {data: 'I\'m connected!'});
       });
-      function startClicked(){
-			  socket.emit('startClicked');
+      function startMatchClicked(){
+			  socket.emit('startMatchClicked');
+      }
+      function preStartClicked(){
+			  socket.emit('preStartClicked');
+      }
+      function setAudienceDisplayClicked(){
+			  socket.emit('setAudienceDisplayClicked');
+      }
+      function setLiveViewClicked(){
+			  socket.emit('setLiveViewClicked');
+      }
+      function commitMatchClicked(){
+			  socket.emit('commitMatchClicked');
+      }
+      function postScoresClicked(){
+			  socket.emit('postScoresClicked');
       }
 
   </script>

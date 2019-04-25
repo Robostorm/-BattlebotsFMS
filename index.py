@@ -6,6 +6,11 @@ app = Flask(__name__)
 app.config['SECRET_KEY'] = 'vnkdjnfjknfl1232#'
 socketio = SocketIO(app)
 
+# vMix Config
+ipaddr = '127.0.0.1'
+def _url(path):
+    return 'http://' + ipaddr + ':8088/api/?' + path
+
 @app.route('/')
 def index():
     return render_template('home.html')
@@ -32,13 +37,38 @@ def settings():
 
 
 
-@socketio.on('startClicked')
+
+
+@socketio.on('preStartClicked')
+def preStartClicked():
+    print ('Prestart!')
+
+@socketio.on('setAudienceDisplayClicked')
+def startClicked():
+    resp = vmix.overlay_match_preview_in(_url)
+
+@socketio.on('setLiveViewClicked')
+def setLiveViewClicked():
+    resp = vmix.overlay_match_preview_out(_url)
+    resp = vmix.overlay_scoreboard_in(_url)
+
+@socketio.on('startMatchClicked')
 def startClicked():
     print('Match Started!')
+    resp = vmix.stop_game_clock(_url)
+    resp = vmix.set_game_clock('00:02:00', _url)
+    resp = vmix.start_game_clock(_url)
     #socketio.emit('my response', json, callback=messageReceived)
+
+@socketio.on('commitMatchClicked')
+def commitMatchClicked():
+    print('Match Commit!')
+
+@socketio.on('postScoresClicked')
+def postScoresClicked():
+    print('Scores R up!')
+    resp = vmix.overlay_scoreboard_out(_url)
+    resp = vmix.overlay_match_result_in(_url)
 
 if __name__ == '__main__':
     socketio.run(app, debug=True)
-
-#if __name__ == '__main__':
-#    app.run(debug=True, host='0.0.0.0')
