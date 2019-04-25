@@ -9,21 +9,23 @@ socketio = SocketIO(app)
 def index():
     return render_template('home.html')
 
-@app.route('/dashboard')
-def dashboard():
-    return render_template('dashboard.html')
+@app.route('/match-play')
+def matchPlay():
+    return render_template('matchPlay.html')
 
-@app.route('/fieldConfig')
-def fieldConfig():
-    return render_template('field.html')
+@app.route('/robot-manager')
+def robotManager():
+    return render_template('robotManager.html')
+
+@app.route('/event-manager')
+def eventManager():
+    return render_template('eventManager.html')
 
 @app.route('/scoring')
 def scoring():
     return render_template('scoring.html')
 
-@app.route('/connections')
-def connections():
-    return render_template('connections.html')
+
 
 @socketio.on('startMatch')
 def handle_my_custom_event(json):
