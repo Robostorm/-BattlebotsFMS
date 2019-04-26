@@ -42,9 +42,10 @@ def settings():
 @socketio.on('preStartClicked')
 def preStartClicked():
     print ('Prestart!')
+    # New teams should be pushed to Match Preview & Scoreboard here
 
 @socketio.on('setAudienceDisplayClicked')
-def startClicked():
+def setAudienceDisplayClicked():
     resp = vmix.overlay_match_preview_in(_url)
 
 @socketio.on('setLiveViewClicked')
