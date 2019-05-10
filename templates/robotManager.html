@@ -52,17 +52,27 @@
   </nav>
 
   <!-- Page Content -->
-  <div class="container">
-    <div class="row">
-      <div class="col-lg-12 text-center">
-        <h1 class="mt-5">A Bootstrap 4 Starter Template</h1>
-        <p class="lead">Complete with pre-defined file paths and responsive navigation!</p>
-        <ul class="list-unstyled">
-          <li>Bootstrap 4.2.1</li>
-          <li>jQuery 3.3.1</li>
-        </ul>
-      </div>
-    </div>
+  <div class="jumbotron" align="center">
+    <table class="table">
+      <thead class="thead">
+        <tr>
+          <th scope="col" colspan="1" class="bg-secondary">Member Name</th>
+          <th scope="col" colspan="1" class="bg-secondary">Robot Name</th>
+          <th scope="col" colspan="1" class="bg-secondary">Robot ID</th>
+          <th scope="col" colspan="1" class="bg-secondary">Connection Status</th>
+          <th scope="col" colspan="1" class="bg-secondary">Robot Channel</th>
+          <th scope="col" colspan="1" class="bg-secondary">Provision Network & Provision Robot</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="table-danger">
+            Robot 1<br>
+            <div id="robot1State">Default State</div>
+            <div id="robot1Mode">Default Mode</div>
+          </td>
+      </tbody>
+    </table>
   </div>
 
   <!-- Bootstrap core JavaScript -->
