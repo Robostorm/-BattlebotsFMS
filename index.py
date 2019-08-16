@@ -7,7 +7,7 @@ app.config['SECRET_KEY'] = 'vnkdjnfjknfl1232#'
 socketio = SocketIO(app)
 
 # vMix Config
-ipaddr = '127.0.0.1'
+ipaddr = '192.168.2.212'
 def _url(path):
     return 'http://' + ipaddr + ':8088/api/?' + path
 
@@ -38,6 +38,7 @@ def settings():
 
 
 
+# SocketIO Match Play
 
 @socketio.on('preStartClicked')
 def preStartClicked():
@@ -70,6 +71,45 @@ def postScoresClicked():
     print('Scores R up!')
     resp = vmix.overlay_scoreboard_out(_url)
     resp = vmix.overlay_match_result_in(_url)
+
+
+# Scoring Page
+
+redCornerBalloon1 = 1
+redCornerBalloon2 = 1
+blueCornerBalloon1 = 1
+blueCornerBalloon2 = 1
+redRobot1Balloon = 2
+redRobot2Balloon = 2
+blueRobot1Balloon = 2
+blueRobot2Balloon = 2
+redPenalty = 0
+bluePenalty = 0
+
+
+@socketio.on('redRobot1BalloonClicked')
+def redRobot1BalloonClicked():
+    print('redRobot1BalloonClicked')
+    global redRobot1Balloon
+    if redRobot1Balloon > 0:
+        redRobot1Balloon = redRobot1Balloon - 1
+    else:
+        redRobot1Balloon = 2
+    socketio.emit('updateImage', {'balloonID' : 'redRobot1BalloonImage', 'value' : redRobot1Balloon, 'color' : 'red'}, broadcast=True)
+    print(redRobot1Balloon)
+
+#@socketio.on('connect')
+#def connect():
+#    print('Hello')
+#    socketio.emit('updateImage', {'balloonID' : 'redRobot1BalloonImage', 'value' : redRobot1Balloon, 'color' : 'red'}, broadcast=True)
+#    socketio.emit('updateImage', {'balloonID' : 'redRobot2BalloonImage', 'value' : redRobot2Balloon, 'color' : 'red'}, broadcast=True)
+#    socketio.emit('updateImage', {'balloonID' : 'blueRobot1BalloonImage', 'value' : blueRobot1Balloon, 'color' : 'blue'}, broadcast=True)
+#    socketio.emit('updateImage', {'balloonID' : 'blueRobot2BalloonImage', 'value' : blueRobot2Balloon, 'color' : 'blue'}, broadcast=True)
+
+
+
+
+
 
 if __name__ == '__main__':
     socketio.run(app, debug=True)
