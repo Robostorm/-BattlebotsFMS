@@ -98,6 +98,10 @@ def redRobot1BalloonClicked():
     socketio.emit('updateImage', {'balloonID' : 'redRobot1BalloonImage', 'value' : redRobot1Balloon, 'color' : 'red'}, broadcast=True)
     print(redRobot1Balloon)
 
+@socketio.on('balloonClicked')
+def balloonClicked(data):
+    print(data.balloonID)
+
 #@socketio.on('connect')
 #def connect():
 #    print('Hello')

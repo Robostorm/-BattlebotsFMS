@@ -64,8 +64,10 @@
       <tbody>
         <tr>
           <td class="table-danger">
-            Robot 1<br>
-            <div id="robot1State">Default State</div>
+            Upper Left Corner<br>
+            <button type="button" class="btn btn-danger btn-lg" onClick="balloonClicked('redCornerBalloon1')">
+              <img src="\static\assets\1red1.png" width="100" id="redCornerBalloon1Image">
+            </button>
           </td>
           <td class="table-danger">
             <button type="button" class="btn btn-danger btn-lg" onClick="redRobot1BalloonClicked()">
@@ -118,6 +120,11 @@
       });
       function redRobot1BalloonClicked(){
         socket.emit('redRobot1BalloonClicked');
+        //document.getElementById("robot1State").innerHTML = "TEST";
+      }
+
+      function balloonClicked(id){
+        socket.emit('balloonClicked', {'balloonID' : id});
         //document.getElementById("robot1State").innerHTML = "TEST";
       }
       
