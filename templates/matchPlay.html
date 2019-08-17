@@ -76,13 +76,13 @@
           <td class="table-danger">
             Robot 1<br>
             <div id="robot1State">Default State</div>
-            <div id="robot1Mode">Default Mode</div>
+            <div id="robot1Mode"></div>
           </td>
           <td class="table-danger"><button type="button" class="btn btn-danger btn-lg" onClick="r1StopClicked()">STOP</button></td>
           <td class="table-primary">
             Robot 3<br>
             <div id="robot3State">Default State</div>
-            <div id="robot3Mode">Default Mode</div>
+            <div id="robot3Mode"></div>
           </td>
           <td class="table-primary"><button type="button" class="btn btn-primary btn-lg" onClick="r3StopClicked()">STOP</button></td>
         </tr>
@@ -90,13 +90,13 @@
           <td class="table-danger">
             Robot 2<br>
             <div id="robot2State">Default State</div>
-            <div id="robot2Mode">Default Mode</div>
+            <div id="robot2Mode"></div>
           </td>
           <td class="table-danger"><button type="button" class="btn btn-danger btn-lg" onClick="r2StopClicked()">STOP</button></td>
           <td class="table-primary">
             Robot 4<br>
             <div id="robot4State">Default State</div>
-            <div id="robot4Mode">Default Mode</div>
+            <div id="robot4Mode"></div>
           </td>
           <td class="table-primary"><button type="button" class="btn btn-primary btn-lg" onClick="r4StopClicked()">STOP</button></td>
         </tr>
@@ -121,7 +121,7 @@
       <div class="tab-pane container active" id="matchSchedule">
           <div class="container">
               <h2>Driver Name Entry</h2>
-              <form action="/match-play">
+              <form action="/match-play" method="POST">
                 <div class="form-group">
                   <label for="text">Driver 1 RED Name:</label>
                   <input type="text" class="form-control" id="text" placeholder="Driver 1 Name" name="driver1name">

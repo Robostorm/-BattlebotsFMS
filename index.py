@@ -24,14 +24,19 @@ def index():
 
 @app.route('/match-play', methods=['GET', 'POST'])
 def matchPlay():
-    global driverRed1Name
-    global driverRed2Name
-    global driverBlue1Name
-    global driverBlue2Name
-    driverRed1Name = request.args.get('driver1name')
-    driverRed2Name = request.args.get('driver2name')
-    driverBlue1Name = request.args.get('driver3name')
-    driverBlue2Name = request.args.get('driver4name')
+    if request.method == 'POST': #this block is only entered when the form is submitted
+        global driverRed1Name
+        global driverRed2Name
+        global driverBlue1Name
+        global driverBlue2Name
+        if type(request.args.get('driver1name')) == str:
+            driverRed1Name = request.args.get('driver1name')
+        if type(request.args.get('driver2name')) == str:
+            driverRed2Name = request.args.get('driver2name')
+        if type(request.args.get('driver3name')) == str:
+            driverBlue1Name = request.args.get('driver3name')
+        if type(request.args.get('driver4name')) == str:
+            driverBlue2Name = request.args.get('driver4name')
     return render_template('matchPlay.html')
 
 @app.route('/robot-manager')
