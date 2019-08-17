@@ -119,11 +119,54 @@
     <!-- Tab panes -->
     <div class="tab-content">
       <div class="tab-pane container active" id="matchSchedule">
+          <div class="container">
+              <h2>Driver Name Entry</h2>
+              <form action="/match-play">
+                <div class="form-group">
+                  <label for="text">Driver 1 RED Name:</label>
+                  <input type="text" class="form-control" id="text" placeholder="Driver 1 Name" name="driver1name">
+                </div>
+                <div class="form-group">
+                  <label for="text">Driver 2 RED Name:</label>
+                  <input type="text" class="form-control" id="text" placeholder="Driver 2 Name" name="driver2name">
+                </div>
+                <div class="form-group">
+                  <label for="text">Driver 1 BLUE Name:</label>
+                  <input type="text" class="form-control" id="text" placeholder="Driver 3 Name" name="driver3name">
+                </div><div class="form-group">
+                  <label for="text">Driver 2 BLUE Name:</label>
+                  <input type="text" class="form-control" id="text" placeholder="Driver 4 Name" name="driver4name">
+                </div>
+                <button type="submit" class="btn btn-primary">Submit</button>
+              </form>
+            </div>
+        
         <table class="table">
 
         </table>
       </div>
-      <div class="tab-pane container fade" id="scoring">Scoring is fun!</div>
+      <div class="tab-pane container fade" id="scoring">
+        Scoring is fun!
+
+        <table class="table">
+            <thead class="thead">
+              <tr>
+                <th scope="col" class="bg-danger">Red</th>
+                <th scope="col" class="bg-primary">Blue</th>
+              </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="table-danger">
+                      <p id="redScoreCounter"></p>
+                    </td>
+                    <td class="table-primary">
+                      <p id="blueScoreCounter">
+                    </td>
+                  </tr>
+            </tbody>
+          </table>
+      </div>
       <div class="tab-pane container fade" id="videoSwitcher">#vMix4life!</div>
   </div>
 
@@ -156,6 +199,18 @@
       function postScoresClicked(){
 			  socket.emit('postScoresClicked');
       }
+
+      socket.on('setNames', function(data){
+        document.getElementById('robot1State').innerHTML = data.red1Name;
+        document.getElementById('robot2State').innerHTML = data.red2Name;
+        document.getElementById('robot3State').innerHTML = data.blue1Name;
+        document.getElementById('robot4State').innerHTML = data.blue2Name;
+      })
+
+      socket.on('setScores', function(data){
+        document.getElementById('redScoreCounter').innerHTML = data.redScore;
+        document.getElementById('blueScoreCounter').innerHTML = data.blueScore;
+      })
 
   </script>
 

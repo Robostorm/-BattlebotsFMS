@@ -55,6 +55,6 @@ def set_blue1_result(text, _url):
 def set_blue2_result(text, _url):
     return requests.get(_url('Function=SetText&Input=MatchResult&SelectedName=Blue2.Text&Value={:s}'.format(text)))
 def set_red_final_score(text, _url):
-    return requests.get(_url('Function=SetText&Input=MatchResult&SelectedName=RedScore.Text&Value={:s}'.format(text)))
+    return requests.get(_url('Function=SetText&Input=MatchResult&SelectedName=RedScore.Text&Value={:d}'.format(text)))
 def set_blue_final_score(text, _url):
-    return requests.get(_url('Function=SetText&Input=MatchResult&SelectedName=BlueScore.Text&Value={:s}'.format(text)))
+    return requests.get(_url('Function=SetText&Input=MatchResult&SelectedName=BlueScore.Text&Value={:d}'.format(text)))

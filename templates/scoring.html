@@ -53,7 +53,7 @@
 
   <!-- Page Content -->
   <div class="jumbotron" align="center">
-    <h3 class="display-4">Scoring</h3>
+    <h3 class="display-4">Score Entry</h3>
     <table class="table">
       <thead class="thead">
         <tr>
@@ -64,40 +64,55 @@
       <tbody>
         <tr>
           <td class="table-danger">
-            Upper Left Corner<br>
-            <button type="button" class="btn btn-danger btn-lg" onClick="balloonClicked('redCornerBalloon1')">
+            <button type="button" class="btn btn-danger btn-lg" onClick="redCornerBalloon1Clicked()">
+              <p>Upper Left Corner</p>
               <img src="\static\assets\1red1.png" width="100" id="redCornerBalloon1Image">
             </button>
           </td>
           <td class="table-danger">
             <button type="button" class="btn btn-danger btn-lg" onClick="redRobot1BalloonClicked()">
+              <p id="redRobot1Name">Robot1</p>
               <img src="\static\assets\2red2.png" width="100" id="redRobot1BalloonImage">
             </button>
           </td>
           <td class="table-primary">
-            Robot 3<br>
-            <div id="robot3State">Default State</div>
+              <button type="button" class="btn btn-primary btn-lg" onClick="blueRobot1BalloonClicked()">
+              <p id="blueRobot1Name">Robot3</p>
+              <img src="\static\assets\2blue2.png" width="100" id="blueRobot1BalloonImage">
+              </button>
           </td>
           <td class="table-primary">
-            <button type="button" class="btn btn-primary btn-lg" onClick="r3StopClicked()">STOP</button>
+              <button type="button" class="btn btn-primary btn-lg" onClick="blueCornerBalloon1Clicked()">
+              <p>Upper Right Corner</p>
+              <img src="\static\assets\1blue1.png" width="100" id="blueCornerBalloon1Image">
+              </button>
           </td>
         </tr>
         <tr>
-          <td class="table-danger">
-            Robot 2<br>
-            <div id="robot2State">Default State</div>
-          </td>
-          <td class="table-danger">
-            <button type="button" class="btn btn-danger btn-lg" onClick="r2StopClicked()">STOP</button>
-          </td>
-          <td class="table-primary">
-            Robot 4<br>
-            <div id="robot4State">Default State</div>
-          </td>
-          <td class="table-primary">
-            <button type="button" class="btn btn-primary btn-lg" onClick="r4StopClicked()">STOP</button>
-          </td>
-        </tr>
+            <td class="table-danger">
+                <button type="button" class="btn btn-danger btn-lg" onClick="redCornerBalloon2Clicked()">
+                  <p>Lower Left Corner</p>
+                  <img src="\static\assets\1red1.png" width="100" id="redCornerBalloon2Image">
+                </button>
+              </td>
+              <td class="table-danger">
+                <button type="button" class="btn btn-danger btn-lg" onClick="redRobot2BalloonClicked()">
+                  <p id="redRobot2Name">Robot2</p>
+                  <img src="\static\assets\2red2.png" width="100" id="redRobot2BalloonImage">
+                </button>
+              </td>
+              <td class="table-primary">
+                  <button type="button" class="btn btn-primary btn-lg" onClick="blueRobot2BalloonClicked()">
+                  <p id="blueRobot2Name">Robot4</p>
+                  <img src="\static\assets\2blue2.png" width="100" id="blueRobot2BalloonImage">
+                  </button>
+              </td>
+              <td class="table-primary">
+                  <button type="button" class="btn btn-primary btn-lg" onClick="blueCornerBalloon2Clicked()">
+                  <p>Upper Right Corner</p>
+                  <img src="\static\assets\1blue1.png" width="100" id="blueCornerBalloon2Image">
+                  </button>
+              </td>
       </tbody>
     </table>
 
@@ -120,19 +135,47 @@
       });
       function redRobot1BalloonClicked(){
         socket.emit('redRobot1BalloonClicked');
-        //document.getElementById("robot1State").innerHTML = "TEST";
       }
-
-      function balloonClicked(id){
-        socket.emit('balloonClicked', {'balloonID' : id});
-        //document.getElementById("robot1State").innerHTML = "TEST";
+      function redRobot2BalloonClicked(){
+        socket.emit('redRobot2BalloonClicked');
+      }
+      function blueRobot1BalloonClicked(){
+        socket.emit('blueRobot1BalloonClicked');
+      }
+      function blueRobot2BalloonClicked(){
+        socket.emit('blueRobot2BalloonClicked');
+      }
+      function redCornerBalloon1Clicked(){
+        socket.emit('redCornerBalloon1Clicked');
+      }
+      function redCornerBalloon2Clicked(){
+        socket.emit('redCornerBalloon2Clicked');
+      }
+      function blueCornerBalloon1Clicked(){
+        socket.emit('blueCornerBalloon1Clicked');
+      }
+      function blueCornerBalloon2Clicked(){
+        socket.emit('blueCornerBalloon2Clicked');
       }
       
+
+      //function balloonClicked(id){
+      //  socket.emit('balloonClicked', {'balloonID' : id});
+        //document.getElementById("robot1State").innerHTML = "TEST";
+      //}
+      
       socket.on('updateImage', function(data){
-        var photoName = '/static/assets/' + '2' + data.color + data.value + '.png';
+        var photoName = '/static/assets/' + data.balloonNum + data.color + data.value + '.png';
         //var balloonIDString = data.balloonID + 'Image';
         //document.getElementById("robot1State").innerHTML = photoName;
         document.getElementById(data.balloonID).src = photoName;
+      })
+
+      socket.on('setNames', function(data){
+        document.getElementById('redRobot1Name').innerHTML = data.red1Name;
+        document.getElementById('redRobot2Name').innerHTML = data.red2Name;
+        document.getElementById('blueRobot1Name').innerHTML = data.blue1Name;
+        document.getElementById('blueRobot2Name').innerHTML = data.blue2Name;
       })
       
 
