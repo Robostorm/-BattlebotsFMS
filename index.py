@@ -14,7 +14,7 @@ driverBlue2Name = 'Blue 2'
 
 
 # vMix Config
-ipaddr = '192.168.2.212'
+ipaddr = '192.168.50.6'
 def _url(path):
     return 'http://' + ipaddr + ':8088/api/?' + path
 
