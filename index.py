@@ -107,7 +107,7 @@ def calculateScores():
     # Calc red score
     redScore = (4 - blueRobot1Balloon - blueRobot2Balloon ) * 5 + (2 - blueCornerBalloon1 - blueCornerBalloon2) * 3
 
-# Calc final scores with bonuses
+# Calc final scores with bonuses and penalties
 def calculateFinalScores():
     blueBonus = 0
     redBonus = 0
@@ -122,8 +122,8 @@ def calculateFinalScores():
     if (blueRobot1Balloon + blueRobot2Balloon + blueCornerBalloon1 + blueCornerBalloon2) == 6:
         blueBonus +=2
     calculateScores()
-    redScore += redBonus
-    blueScore += blueBonus
+    redScore += redBonus + bluePenalty
+    blueScore += blueBonus + redPenalty
 
 # SocketIO Match Play
 @socketio.on('preStartClicked')
@@ -185,6 +185,8 @@ def commitMatchClicked():
     global redRobot2Balloon
     global blueRobot1Balloon
     global blueRobot2Balloon
+    global redPenalty
+    global bluePenalty
     redCornerBalloon1 = 1
     redCornerBalloon2 = 1
     blueCornerBalloon1 = 1
@@ -193,6 +195,8 @@ def commitMatchClicked():
     redRobot2Balloon = 2
     blueRobot1Balloon = 2
     blueRobot2Balloon = 2
+    redPenalty = 0
+    bluePenalty = 0
 
     socketio.emit('updateImage', {'balloonID' : 'redRobot1BalloonImage', 'value' : redRobot1Balloon, 'color' : 'red', 'balloonNum' : '2'}, broadcast=True)
     socketio.emit('updateImage', {'balloonID' : 'redRobot2BalloonImage', 'value' : redRobot2Balloon, 'color' : 'red', 'balloonNum' : '2'}, broadcast=True)
@@ -315,6 +319,27 @@ def blueCornerBalloon2Clicked():
     socketio.emit('updateImage', {'balloonID' : 'blueCornerBalloon2Image', 'value' : blueCornerBalloon2, 'color' : 'blue', 'balloonNum' : '1'}, broadcast=True)
     #print(blueRobot1Balloon)
 
+@socketio.on('redPenaltyIncrease')
+def redPenaltyIncrease():
+    global redPenalty
+    redPenalty += 1
+    socketio.emit('setPenalties', {'red' : redPenalty, 'blue' : bluePenalty}, broadcast=True)
+@socketio.on('redPenaltyDecrease')
+def redPenaltyDecrease():
+    global redPenalty
+    redPenalty -= 1
+    socketio.emit('setPenalties', {'red' : redPenalty, 'blue' : bluePenalty}, broadcast=True)
+@socketio.on('bluePenaltyIncrease')
+def bluePenaltyIncrease():
+    global bluePenalty
+    bluePenalty += 1
+    socketio.emit('setPenalties', {'red' : redPenalty, 'blue' : bluePenalty}, broadcast=True)
+@socketio.on('bluePenaltyDecrease')
+def bluePenaltyDecrease():
+    global bluePenalty
+    bluePenalty -= 1
+    socketio.emit('setPenalties', {'red' : redPenalty, 'blue' : bluePenalty}, broadcast=True)
+
 
 #@socketio.on('balloonClicked')
 #def balloonClicked(data):
@@ -332,7 +357,7 @@ def connect():
     socketio.emit('updateImage', {'balloonID' : 'blueCornerBalloon1Image', 'value' : blueCornerBalloon1, 'color' : 'blue', 'balloonNum' : '1'}, broadcast=True)
     socketio.emit('updateImage', {'balloonID' : 'blueCornerBalloon2Image', 'value' : blueCornerBalloon2, 'color' : 'blue', 'balloonNum' : '1'}, broadcast=True)
     socketio.emit('setNames', {'red1Name' : driverRed1Name, 'red2Name' : driverRed2Name, 'blue1Name' : driverBlue1Name, 'blue2Name' : driverBlue2Name}, broadcast=True)
-
+    socketio.emit('setPenalties', {'red' : redPenalty, 'blue' : bluePenalty}, broadcast=True)
 
 
 @socketio.on('setNames')

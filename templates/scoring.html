@@ -89,30 +89,72 @@
           </td>
         </tr>
         <tr>
-            <td class="table-danger">
-                <button type="button" class="btn btn-danger btn-lg" onClick="redCornerBalloon2Clicked()">
-                  <p>Lower Left Corner</p>
-                  <img src="\static\assets\1red1.png" width="100" id="redCornerBalloon2Image">
-                </button>
-              </td>
-              <td class="table-danger">
-                <button type="button" class="btn btn-danger btn-lg" onClick="redRobot2BalloonClicked()">
-                  <p id="redRobot2Name">Robot2</p>
-                  <img src="\static\assets\2red2.png" width="100" id="redRobot2BalloonImage">
-                </button>
-              </td>
-              <td class="table-primary">
-                  <button type="button" class="btn btn-primary btn-lg" onClick="blueRobot2BalloonClicked()">
-                  <p id="blueRobot2Name">Robot4</p>
-                  <img src="\static\assets\2blue2.png" width="100" id="blueRobot2BalloonImage">
-                  </button>
-              </td>
-              <td class="table-primary">
-                  <button type="button" class="btn btn-primary btn-lg" onClick="blueCornerBalloon2Clicked()">
-                  <p>Upper Right Corner</p>
-                  <img src="\static\assets\1blue1.png" width="100" id="blueCornerBalloon2Image">
-                  </button>
-              </td>
+          <td class="table-danger">
+            <button type="button" class="btn btn-danger btn-lg" onClick="redCornerBalloon2Clicked()">
+              <p>Lower Left Corner</p>
+              <img src="\static\assets\1red1.png" width="100" id="redCornerBalloon2Image">
+            </button>
+          </td>
+          <td class="table-danger">
+            <button type="button" class="btn btn-danger btn-lg" onClick="redRobot2BalloonClicked()">
+              <p id="redRobot2Name">Robot2</p>
+              <img src="\static\assets\2red2.png" width="100" id="redRobot2BalloonImage">
+            </button>
+          </td>
+          <td class="table-primary">
+              <button type="button" class="btn btn-primary btn-lg" onClick="blueRobot2BalloonClicked()">
+              <p id="blueRobot2Name">Robot4</p>
+              <img src="\static\assets\2blue2.png" width="100" id="blueRobot2BalloonImage">
+              </button>
+          </td>
+          <td class="table-primary">
+              <button type="button" class="btn btn-primary btn-lg" onClick="blueCornerBalloon2Clicked()">
+              <p>Upper Right Corner</p>
+              <img src="\static\assets\1blue1.png" width="100" id="blueCornerBalloon2Image">
+              </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <p></p>
+
+    <!--Penalties Table-->
+    <table class="table">
+      <thead class="thead">
+        <tr>
+          <th scope="col" colspan="3" class="bg-danger">Red Penalties</th>
+          <th scope="col" colspan="3" class="bg-primary">Blue Penalties</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="table-danger">
+            <button type="button" class="btn btn-danger btn-lg" onClick="socket.emit('redPenaltyDecrease');">
+              -
+            </button>
+          </td>
+          <td class="table-danger">
+            <h4><span class="badge badge-danger" id='redPenaltyCounter'>0</span></h4>
+          </td>
+          <td class="table-danger">
+            <button type="button" class="btn btn-danger btn-lg" onClick="socket.emit('redPenaltyIncrease');">
+              +
+            </button>
+          </td>
+          <td class="table-primary">
+            <button type="button" class="btn btn-primary btn-lg" onClick="socket.emit('bluePenaltyDecrease');">
+              -
+            </button>
+          </td>
+          <td class="table-primary">
+            <h4><span class="badge badge-primary" id='bluePenaltyCounter'>0</span></h4>
+          </td>
+          <td class="table-primary">
+            <button type="button" class="btn btn-primary btn-lg" onClick="socket.emit('bluePenaltyIncrease');">
+              +
+            </button>
+          </td>
+        </tr>
       </tbody>
     </table>
 
@@ -157,6 +199,9 @@
       function blueCornerBalloon2Clicked(){
         socket.emit('blueCornerBalloon2Clicked');
       }
+      function decreaseRedPenalty(){
+        socket.emit('penaltyChange', {'team':'redPenalty', 'value' : '-1'});
+      }
       
 
       //function balloonClicked(id){
@@ -177,6 +222,13 @@
         document.getElementById('blueRobot1Name').innerHTML = data.blue1Name;
         document.getElementById('blueRobot2Name').innerHTML = data.blue2Name;
       })
+
+      socket.on('setPenalties', function(data){
+        document.getElementById('redPenaltyCounter').innerHTML = data.red;
+        document.getElementById('bluePenaltyCounter').innerHTML = data.blue;
+      })
+
+
       
 
   </script>
